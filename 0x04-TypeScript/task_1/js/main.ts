@@ -1,3 +1,159 @@
+// interface Teacher {
+//   readonly firstName: string;
+//   readonly lastName: string;
+//   fullTimeEmployee: boolean;
+//   yearsOfExperience?: number;
+//   location: string;
+//   [key: string]: any; // allow extra attributes
+// }
+
+// /** ========================
+//  * Director Interface (extends Teacher)
+//  * ======================== */
+// interface Director extends Teacher {
+//   numberOfReports: number;
+// }
+
+// // Example Teacher object
+// const teacher3: Teacher = {
+//   firstName: "John",
+//   lastName: "Doe",
+//   fullTimeEmployee: false,
+//   location: "London",
+//   contract: false,
+//   workFromHome: () => "Cannot work from home",
+//   getCoffeeBreak: () => "Cannot have a break",
+//   workTeacherTasks: () => "Getting to work",
+// };
+
+// /** ========================
+//  * Directors Interface
+//  * ======================== */
+// interface Directors extends Teacher {
+//   numberOfReports: number;
+//   workFromHome(): string;
+//   getCoffeeBreak(): string;
+//   workTeacherTasks(): string;
+// }
+
+// // Example Director object
+// const director1: Directors = {
+//   firstName: "John",
+//   lastName: "Doe",
+//   fullTimeEmployee: true,
+//   location: "London",
+//   numberOfReports: 17,
+//   workFromHome: () => "Working from home",
+//   getCoffeeBreak: () => "Getting a coffee break",
+//   workTeacherTasks: () => "Getting to work",
+// };
+
+// /** ========================
+//  * printTeacher Function
+//  * ======================== */
+// interface PrintTeacherFunction {
+//   (firstName: string, lastName: string): string;
+// }
+
+// const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+//   return `${firstName[0]}. ${lastName}`;
+// };
+
+// /** ========================
+//  * Student Class
+//  * ======================== */
+// interface StudentClassInterface {
+//   firstName: string;
+//   lastName: string;
+//   workOnHomework(): string;
+//   displayName(): string;
+// }
+
+// class StudentClass implements StudentClassInterface {
+//   constructor(public firstName: string, public lastName: string) {}
+
+//   workOnHomework(): string {
+//     return "Currently working";
+//   }
+
+//   displayName(): string {
+//     return this.firstName;
+//   }
+// }
+
+// /** ========================
+//  * Teacher & Director Classes
+//  * ======================== */
+// interface TeacherInterface {
+//   workFromHome(): string;
+//   getCoffeeBreak(): string;
+//   workTeacherTasks(): string;
+// }
+
+// interface DirectorInterface {
+//   workFromHome(): string;
+//   getCoffeeBreak(): string;
+//   workDirectorTasks(): string;
+// }
+
+// class TeacherClass implements TeacherInterface {
+//   workFromHome(): string {
+//     return "Cannot work from home";
+//   }
+//   getCoffeeBreak(): string {
+//     return "Cannot have a break";
+//   }
+//   workTeacherTasks(): string {
+//     return "Getting to work";
+//   }
+// }
+
+// class DirectorClass implements DirectorInterface {
+//   workFromHome(): string {
+//     return "Working from home";
+//   }
+//   getCoffeeBreak(): string {
+//     return "Getting a coffee break";
+//   }
+//   workDirectorTasks(): string {
+//     return "Getting to director tasks";
+//   }
+// }
+
+// /** ========================
+//  * Helper Functions
+//  * ======================== */
+// function createEmployee(salary: number | string): TeacherClass | DirectorClass {
+//   if (typeof salary === "number" && salary < 500) return new TeacherClass();
+//   return new DirectorClass();
+// }
+
+// function isDirector(
+//   employee: TeacherClass | DirectorClass
+// ): employee is DirectorClass {
+//   return (employee as DirectorClass).workDirectorTasks !== undefined;
+// }
+
+// function executeWork(employee: TeacherClass | DirectorClass) {
+//   console.log(
+//     isDirector(employee)
+//       ? employee.workDirectorTasks()
+//       : employee.workTeacherTasks()
+//   );
+// }
+
+// /** ========================
+//  * Subjects & teachClass Function
+//  * ======================== */
+// type Subjects = "Math" | "History";
+
+// function teachClass(todayClass: Subjects): string {
+//   return `Teaching ${todayClass}`;
+// }
+
+// console.log(printTeacher("John", "Doe")); // Output: J. Doe
+// console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+
 /** ========================
  * Teacher Interface
  * ======================== */
@@ -36,6 +192,9 @@ const teacher3: Teacher = {
   fullTimeEmployee: false,
   location: "London",
   contract: false, // extra property
+  workFromHome: () => "Cannot work from home",
+  getCoffeeBreak: () => "Cannot have a break",
+  workTeacherTasks: () => "Getting to work",
 };
 
 // Example Director object
@@ -45,15 +204,40 @@ const director1: Director = {
   fullTimeEmployee: true,
   location: "London",
   numberOfReports: 17,
+  workFromHome: () => "Working from home",
+  getCoffeeBreak: () => "Getting a coffee break",
+  workTeacherTasks: () => "Getting to work",
 };
 
 /** ========================
  * printTeacher Function
  * ======================== */
 /**
+ * Interface representing the function signature of printTeacher
+ * Accepts a single object with firstName and lastName
+ * Returns a string in the format: "J. Doe"
+ */
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+/**
+ * Function to print teacher name in short format
+//  */
+
+/** ========================
+ * Interface for printTeacher
+ * ======================== */
+
+/**
  * Interface for the printTeacher function
- * Defines a function signature that accepts firstName and lastName
- * and returns a formatted string
+ *
+ * Defines a function signature that:
+ * - Takes two string parameters: firstName and lastName
+ * - Returns a formatted string with first initial and full last name
+ *
+ * @param firstName - The teacher's first name
+ * @param lastName - The teacher's last name
+ * @returns A string in the format "F. LastName"
  */
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
@@ -61,31 +245,38 @@ interface printTeacherFunction {
 
 /**
  * Prints teacher name in abbreviated format
- * Returns the first letter of firstName followed by period and full lastName
+ *
+ * Takes a teacher's full name and returns it in a shortened format
+ * where only the first letter of the first name is shown, followed
+ * by a period, space, and the full last name.
  *
  * @param firstName - The teacher's first name
  * @param lastName - The teacher's last name
- * @returns Formatted string: "F. LastName"
+ * @returns Formatted string: "FirstInitial. LastName"
+ *
+ * @example
+ * printTeacher("John", "Doe") // Returns: "J. Doe"
+ * printTeacher("Jane", "Smith") // Returns: "J. Smith"
  */
+
+
 function printTeacher(firstName: string, lastName: string): string {
   firstName = firstName[0];
   return `${firstName}. ${lastName}`;
 }
 
-/** ========================
- * Student Class
- * ======================== */
+// Example usage
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
+console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+console.log(printTeacher("Albert", "Einstein")); // Output: A. Einstein
 /**
- * Interface for the StudentClass constructor
- * Defines the parameters required to create a new Student instance
- */
-interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
-}
+
+
+
+
 
 /**
- * Interface describing the StudentClass
- * Defines the properties and methods that a Student instance must have
+ * Interface for a Student class
  */
 interface StudentClassInterface {
   firstName: string;
@@ -95,35 +286,15 @@ interface StudentClassInterface {
 }
 
 /**
- * StudentClass implementation
- * Represents a student with basic functionality for homework and display
+ * Student class implementing StudentClassInterface
  */
 class StudentClass implements StudentClassInterface {
-  firstName: string;
-  lastName: string;
+  constructor(public firstName: string, public lastName: string) {}
 
-  /**
-   * Creates a new StudentClass instance
-   * @param firstName - The student's first name
-   * @param lastName - The student's last name
-   */
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  /**
-   * Returns a string indicating the student is currently working on homework
-   * @returns The string "Currently working"
-   */
   workOnHomework(): string {
     return "Currently working";
   }
 
-  /**
-   * Returns the first name of the student
-   * @returns The student's first name
-   */
   displayName(): string {
     return this.firstName;
   }
@@ -205,27 +376,36 @@ function isDirector(
 /**
  * Execute the appropriate work function based on employee type
  */
-function executeWork(employee: TeacherClass | DirectorClass): void {
-  if (isDirector(employee)) {
-    console.log(employee.workDirectorTasks());
-  } else {
-    console.log(employee.workTeacherTasks());
-  }
+function executeWork(employee: TeacherClass | DirectorClass) {
+  console.log(
+    isDirector(employee)
+      ? employee.workDirectorTasks()
+      : employee.workTeacherTasks()
+  );
 }
 
 /** ========================
  * Subjects & teachClass Function
  * ======================== */
-/**
- * String literal type for allowed subjects
- */
 type Subjects = "Math" | "History";
 
 /**
  * Function to teach a class based on Subject type
- * @param todayClass - The subject being taught today
- * @returns A string indicating what is being taught
  */
 function teachClass(todayClass: Subjects): string {
   return `Teaching ${todayClass}`;
 }
+
+// Example usage
+console.log(teachClass("Math")); // Teaching Math
+console.log(teachClass("History")); // Teaching History
+
+
+// Example usage
+const student1 = new StudentClass("John", "Doe");
+console.log(student1.displayName());      // Output: John
+console.log(student1.workOnHomework());   // Output: Currently working
+
+const student2 = new StudentClass("Jane", "Smith");
+console.log(student2.displayName());      // Output: Jane
+console.log(student2.workOnHomework());   // Output: Currently working
