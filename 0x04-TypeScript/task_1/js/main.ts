@@ -504,21 +504,50 @@ const director1: Director = {
 /** ========================
  * printTeacher Function
  * ======================== */
-// Interface for printTeacher function
+// // Interface for printTeacher function
+// interface printTeacherFunction {
+//   (firstName: string, lastName: string): string;
+// }
+
+// // Function implementation
+// // const printTeacher: printTeacherFunction = (firstName, lastName) => {
+// //   return `${firstName[0]}. ${lastName}`;
+// // };
+// function printTeacher(firstName: string, lastName: string): string {
+//   firstName = firstName[0];
+//   return `${firstName}. ${lastName}`;
+// }
+
+// // Example usage
+// console.log(printTeacher("John", "Doe")); // Output: J. Doe
+// console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+
+/**
+ * Interface for the printTeacher function
+ * Defines a function signature that accepts firstName and lastName
+ * and returns a formatted string
+ */
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function implementation
-// const printTeacher: printTeacherFunction = (firstName, lastName) => {
-//   return `${firstName[0]}. ${lastName}`;
-// };
+/**
+ * Prints teacher name in abbreviated format
+ * Returns the first letter of firstName followed by period and full lastName
+ *
+ * @param firstName - The teacher's first name
+ * @param lastName - The teacher's last name
+ * @returns Formatted string: "F. LastName"
+ *
+ * @example
+ * printTeacher("John", "Doe") // Returns: "J. Doe"
+ */
 function printTeacher(firstName: string, lastName: string): string {
   firstName = firstName[0];
   return `${firstName}. ${lastName}`;
 }
 
-// Example usage
+// Example usage (optional - can be removed if not needed)
 console.log(printTeacher("John", "Doe")); // Output: J. Doe
 console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
 
@@ -561,28 +590,6 @@ console.log(student1.workOnHomework()); // Output: Currently working
 const student2 = new StudentClass("Jane", "Smith");
 console.log(student2.displayName()); // Output: Jane
 console.log(student2.workOnHomework()); // Output: Currently working
-
-// Correct single class definition for ALX
-// class StudentClass implements StudentClassInterface {
-//   constructor(public firstName: string, public lastName: string) {}
-
-//   workOnHomework(): string {
-//     return "Currently working";
-//   }
-
-//   displayName(): string {
-//     return this.firstName;
-//   }
-// }
-
-// // Example usage
-// const student1 = new StudentClass("John", "Doe");
-// console.log(student1.displayName()); // Output: John
-// console.log(student1.workOnHomework()); // Output: Currently working
-
-// const student2 = new StudentClass("Jane", "Smith");
-// console.log(student2.displayName()); // Output: Jane
-// console.log(student2.workOnHomework()); // Output: Currently working
 
 /** ========================
  * Teacher & Director Classes
