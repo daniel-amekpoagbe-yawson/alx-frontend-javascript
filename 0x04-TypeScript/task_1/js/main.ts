@@ -227,26 +227,65 @@ interface printTeacherFunction {
 /** ========================
  * Interface for printTeacher
  * ======================== */
+
 /**
- * Interface for a function that accepts two strings (firstName, lastName)
- * and returns a string in the format "J. Doe"
+ * Interface for the printTeacher function
+ *
+ * Defines a function signature that:
+ * - Takes two string parameters: firstName and lastName
+ * - Returns a formatted string with first initial and full last name
+ *
+ * @param firstName - The teacher's first name
+ * @param lastName - The teacher's last name
+ * @returns A string in the format "F. LastName"
  */
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-/** ========================
- * printTeacher Function
- * ======================== */
+/**
+ * Prints teacher name in abbreviated format
+ *
+ * Takes a teacher's full name and returns it in a shortened format
+ * where only the first letter of the first name is shown, followed
+ * by a period, space, and the full last name.
+ *
+ * @param firstName - The teacher's first name
+ * @param lastName - The teacher's last name
+ * @returns Formatted string: "FirstInitial. LastName"
+ *
+ * @example
+ * printTeacher("John", "Doe") // Returns: "J. Doe"
+ * printTeacher("Jane", "Smith") // Returns: "J. Smith"
+ */
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName[0]}. ${lastName}`;
 };
 
-/** ========================
- * Example usage
- * ======================== */
+// Example usage
 console.log(printTeacher("John", "Doe")); // Output: J. Doe
 console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+console.log(printTeacher("Albert", "Einstein")); // Output: A. Einstein
+/**
+ * Interface for a function that accepts two strings (firstName, lastName)
+ * and returns a string in the format "J. Doe"
+//  */
+// interface printTeacherFunction {
+//   (firstName: string, lastName: string): string;
+// }
+
+// /** ========================
+//  * printTeacher Function
+//  * ======================== */
+// const printTeacher: printTeacherFunction = (firstName, lastName) => {
+//   return `${firstName[0]}. ${lastName}`;
+// };
+
+// /** ========================
+//  * Example usage
+//  * ======================== */
+// console.log(printTeacher("John", "Doe")); // Output: J. Doe
+// console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
 
 // const printTeacher: PrintTeacherFunction = ({ firstName, lastName }) => {
 //   return `${firstName[0]}. ${lastName}`;
