@@ -522,34 +522,17 @@ const director1: Director = {
 // console.log(printTeacher("John", "Doe")); // Output: J. Doe
 // console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
 
-/**
- * Interface for the printTeacher function
- * Defines a function signature that accepts firstName and lastName
- * and returns a formatted string
- */
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: { firstName: string; lastName: string }): string;
 }
 
-/**
- * Prints teacher name in abbreviated format
- * Returns the first letter of firstName followed by period and full lastName
- *
- * @param firstName - The teacher's first name
- * @param lastName - The teacher's last name
- * @returns Formatted string: "F. LastName"
- *
- * @example
- * printTeacher("John", "Doe") // Returns: "J. Doe"
- */
-function printTeacher(firstName: string, lastName: string): string {
-  firstName = firstName[0];
-  return `${firstName}. ${lastName}`;
-}
+const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
+  return `${firstName[0]}. ${lastName}`;
+};
 
-// Example usage (optional - can be removed if not needed)
-console.log(printTeacher("John", "Doe")); // Output: J. Doe
-console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+// Example usage
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // Output: J. Doe
+console.log(printTeacher({ firstName: "Jane", lastName: "Smith" })); // Output: J. Smith
 
 /** ========================
  * Student Class
