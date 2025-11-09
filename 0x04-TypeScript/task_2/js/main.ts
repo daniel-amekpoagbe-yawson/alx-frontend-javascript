@@ -48,26 +48,15 @@ function createEmployee(salary: number | string): Director | Teacher {
   return new Director();
 }
 
-// ✅ Example test cases
+// Example test cases
 console.log(createEmployee(200)); // Teacher
 console.log(createEmployee(1000)); // Director
 console.log(createEmployee("$500")); // Director
 
-// ✅ New part (Task 2)
-// type Subjects = "Math" | "History";
-
-// function teachClass(todayClass: Subjects): string {
-//   if (todayClass === "Math") {
-//     return "Teaching Math";
-//   } else {
-//     return "Teaching History";
-//   }
-// }
-
 // String literal type
 type Subjects = "Math" | "History";
 
-// teachClass function with explicit parameter type
+// teachClass function - note: no space after colon
 function teachClass(todayClass: Subjects): string {
   if (todayClass === "Math") {
     return "Teaching Math";
