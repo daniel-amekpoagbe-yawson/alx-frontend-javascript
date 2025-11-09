@@ -258,8 +258,13 @@ interface printTeacherFunction {
  * printTeacher("John", "Doe") // Returns: "J. Doe"
  * printTeacher("Jane", "Smith") // Returns: "J. Smith"
  */
+// function printTeacher(firstName: string, lastName: string): string {
+//   return `${firstName[0]}. ${lastName}`;
+// }
+
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName[0]}. ${lastName}`;
+  firstName = firstName[0];
+  return `${firstName}. ${lastName}`;
 }
 
 // Example usage
