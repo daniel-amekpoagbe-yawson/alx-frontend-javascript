@@ -510,9 +510,13 @@ interface printTeacherFunction {
 }
 
 // Function implementation
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName[0]}. ${lastName}`;
-};
+// const printTeacher: printTeacherFunction = (firstName, lastName) => {
+//   return `${firstName[0]}. ${lastName}`;
+// };
+function printTeacher(firstName: string, lastName: string): string {
+  firstName = firstName[0];
+  return `${firstName}. ${lastName}`;
+}
 
 // Example usage
 console.log(printTeacher("John", "Doe")); // Output: J. Doe
@@ -528,9 +532,17 @@ interface StudentClassInterface {
   displayName(): string;
 }
 
-// Correct single class definition for ALX
-class StudentClass implements StudentClassInterface {
-  constructor(public firstName: string, public lastName: string) {}
+/** ========================
+ * Student Class
+ * ======================== */
+class StudentClass {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
   workOnHomework(): string {
     return "Currently working";
@@ -549,6 +561,28 @@ console.log(student1.workOnHomework()); // Output: Currently working
 const student2 = new StudentClass("Jane", "Smith");
 console.log(student2.displayName()); // Output: Jane
 console.log(student2.workOnHomework()); // Output: Currently working
+
+// Correct single class definition for ALX
+// class StudentClass implements StudentClassInterface {
+//   constructor(public firstName: string, public lastName: string) {}
+
+//   workOnHomework(): string {
+//     return "Currently working";
+//   }
+
+//   displayName(): string {
+//     return this.firstName;
+//   }
+// }
+
+// // Example usage
+// const student1 = new StudentClass("John", "Doe");
+// console.log(student1.displayName()); // Output: John
+// console.log(student1.workOnHomework()); // Output: Currently working
+
+// const student2 = new StudentClass("Jane", "Smith");
+// console.log(student2.displayName()); // Output: Jane
+// console.log(student2.workOnHomework()); // Output: Currently working
 
 /** ========================
  * Teacher & Director Classes
