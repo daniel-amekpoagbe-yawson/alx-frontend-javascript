@@ -114,6 +114,13 @@ interface Teacher {
   [key: string]: any; // allow extra attributes
 }
 
+/** ========================
+ * Director Interface (extends Teacher)
+ * ======================== */
+interface Director extends Teacher {
+  numberOfReports: number;
+}
+
 // Example Teacher object
 const teacher3: Teacher = {
   firstName: "John",
