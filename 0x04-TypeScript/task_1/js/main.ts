@@ -258,9 +258,9 @@ interface printTeacherFunction {
  * printTeacher("John", "Doe") // Returns: "J. Doe"
  * printTeacher("Jane", "Smith") // Returns: "J. Smith"
  */
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName[0]}. ${lastName}`;
-};
+}
 
 // Example usage
 console.log(printTeacher("John", "Doe")); // Output: J. Doe
