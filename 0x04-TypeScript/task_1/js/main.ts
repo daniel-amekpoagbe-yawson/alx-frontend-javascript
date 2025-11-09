@@ -401,6 +401,60 @@ console.log(teachClass("Math")); // Teaching Math
 console.log(teachClass("History")); // Teaching History
 
 
+/**
+ * Interface for the StudentClass constructor
+ * Defines the parameters required to create a new Student instance
+ */
+interface StudentConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+/**
+ * Interface describing the StudentClass
+ * Defines the properties and methods that a Student instance must have
+ */
+interface StudentClassInterface {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+/**
+ * StudentClass implementation
+ * Represents a student with basic functionality for homework and display
+ */
+class StudentClass implements StudentClassInterface {
+  firstName: string;
+  lastName: string;
+
+  /**
+   * Creates a new StudentClass instance
+   * @param firstName - The student's first name
+   * @param lastName - The student's last name
+   */
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  /**
+   * Returns a string indicating the student is currently working on homework
+   * @returns The string "Currently working"
+   */
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  /**
+   * Returns the first name of the student
+   * @returns The student's first name
+   */
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
 // Example usage
 const student1 = new StudentClass("John", "Doe");
 console.log(student1.displayName());      // Output: John
