@@ -257,3 +257,6 @@ type Subjects = "Math" | "History";
 function teachClass(todayClass: Subjects): string {
   return `Teaching ${todayClass}`;
 }
+
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
+console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
