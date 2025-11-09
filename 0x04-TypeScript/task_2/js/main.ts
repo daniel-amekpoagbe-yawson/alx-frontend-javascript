@@ -54,8 +54,20 @@ console.log(createEmployee(1000)); // Director
 console.log(createEmployee("$500")); // Director
 
 // ✅ New part (Task 2)
+// type Subjects = "Math" | "History";
+
+// function teachClass(todayClass: Subjects): string {
+//   if (todayClass === "Math") {
+//     return "Teaching Math";
+//   } else {
+//     return "Teaching History";
+//   }
+// }
+
+// String literal type
 type Subjects = "Math" | "History";
 
+// teachClass function with explicit parameter type
 function teachClass(todayClass: Subjects): string {
   if (todayClass === "Math") {
     return "Teaching Math";
@@ -64,6 +76,6 @@ function teachClass(todayClass: Subjects): string {
   }
 }
 
-// ✅ Expected results
+// Example usage
 console.log(teachClass("Math")); // Teaching Math
 console.log(teachClass("History")); // Teaching History
