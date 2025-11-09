@@ -217,20 +217,44 @@ const director1: Director = {
  * Accepts a single object with firstName and lastName
  * Returns a string in the format: "J. Doe"
  */
-interface PrintTeacherFunction {
-  (teacher: { firstName: string; lastName: string }): string;
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
 }
-
 /**
  * Function to print teacher name in short format
+//  */
+
+/** ========================
+ * Interface for printTeacher
+ * ======================== */
+/**
+ * Interface for a function that accepts two strings (firstName, lastName)
+ * and returns a string in the format "J. Doe"
  */
-const printTeacher: PrintTeacherFunction = ({ firstName, lastName }) => {
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+/** ========================
+ * printTeacher Function
+ * ======================== */
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName[0]}. ${lastName}`;
 };
 
-// Example usage
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
-console.log(printTeacher({ firstName: "Jane", lastName: "Smith" })); // J. Smith
+/** ========================
+ * Example usage
+ * ======================== */
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
+console.log(printTeacher("Jane", "Smith")); // Output: J. Smith
+
+// const printTeacher: PrintTeacherFunction = ({ firstName, lastName }) => {
+//   return `${firstName[0]}. ${lastName}`;
+// };
+
+// // Example usage
+// console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
+// console.log(printTeacher({ firstName: "Jane", lastName: "Smith" })); // J. Smith
 
 /** ========================
  * Student Class
